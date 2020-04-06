@@ -1,0 +1,1 @@
+python "D:\_Data\ArduinoProjects\AQUA\espota.py" -i 192.168.0.20 -f D:\_Data\ArduinoProjects\AQUA\AQUA.ino.generic.bin
