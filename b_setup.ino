@@ -132,4 +132,6 @@ void ICACHE_FLASH_ATTR setup()
         syncEventTriggered = true;
     });
 
+    SendLogToAdafruit("ESP started");
+
 }

@@ -37,12 +37,14 @@ void loop()
       if (timeElapsed(parTime1)&& !timeElapsed(parTime6)) {
         phase = 1;
         Serial.println("TO PHASE 1");
+        SendLogToAdafruit("TO PHASE 1");
       }
     break;
     case 1://sviti na maly vykon
       gradient=20;//4 je za hodinu
       if (timeElapsed(parTime2)) {
         Serial.println("TO PHASE 2");
+        SendLogToAdafruit("TO PHASE 2");
         phase = 2;
       }
     break;
@@ -55,6 +57,7 @@ void loop()
  
       if (timeElapsed(parTime4)) {
         Serial.println("TO PHASE 3");
+        SendLogToAdafruit("TO PHASE 3");
         phase = 3;
       }
     break;
@@ -67,6 +70,7 @@ void loop()
     
       if (timeElapsed(parTime6)) {
         Serial.println("TO PHASE 0");
+        SendLogToAdafruit("TO PHASE 0");
         phase = 0;
       }
     break;
@@ -82,19 +86,22 @@ void loop()
     }
   }
 
-  /*if (millis() > tmrPrint + 3600000L){//each 1h
+  if (millis() > tmrPrint + 3600000L){//each 1h
     tmrPrint = millis();
-    Serial.print("Time:");
-    Serial.print(hour());
-    Serial.print(":");
-    Serial.println(minute());
+    SendLogToAdafruit(String("Hour report:")+String(outVal));
     
-  }*/
- 
+  }
+
+  if(phase == 1 && !timeElapsed(parTime1)){
+    phase = 0;
+    outVal = 1023;
+    Serial.println("EMERGENCY JUMP TO 0!");
+    SendLogToAdafruit("EMERGENCY JUMP TO 0!");
+  }
   
   //10sec timer
   if (millis() < lastStamp)lastStamp = millis(); //prevent overflow issue
-  if (millis() > lastStamp + 10000) {
+  if (millis() > lastStamp + 10000UL) {
     automatic=true;
     lastStamp = millis();
 

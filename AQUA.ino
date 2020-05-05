@@ -5,6 +5,7 @@
 #include <EEPROM.h>
 #include <TimeLib.h>
 #include <NtpClientLib.h>
+#include <ESP8266HTTPClient.h>
 
 #define ONBOARDLED 2 // Built in LED on ESP-12/ESP-07
 #define NTP_TIMEOUT 1500
@@ -17,6 +18,9 @@ IPAddress subnet(255, 255, 255, 0);
 
 ESP8266WebServer webserver(80);
 WiFiClient client;
+
+HTTPClient http;    //Declare object of class HTTPClient
+
 
 const unsigned long BAUD_RATE = 9600;                 // serial connection speed
 bool automatic = true;

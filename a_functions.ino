@@ -142,3 +142,30 @@ bool timeElapsed(tmElements_t t) { //true pokud cas t uz uplynul
   }
   return false;
 }
+
+
+void SendLogToAdafruit(String str){
+
+   http.begin(client,"http://io.adafruit.com/api/v2/Zbysekz/feeds/feed/data");      //Specify request destination
+
+   http.addHeader("Content-Type", "application/json");
+
+   http.addHeader("X-AIO-Key", "aio_ULqQ231RyQ84B5ANnYKi0TJp8Xuo");   
+
+   String postData = "{\"value\":\"" + str+"\"}";
+   int httpCode = http.POST(postData);   //Send the request
+
+   String payload = http.getString();                  //Get the response payload
+
+ 
+   Serial.println(postData);
+   Serial.println(httpCode);   //Print HTTP return code
+   if(httpCode<=0)
+    Serial.printf("[HTTP] POST... failed, error: %s\n", http.errorToString(httpCode).c_str());
+    
+   Serial.println(payload);    //Print request response payload
+
+ 
+
+   http.end();  //Close connection
+}

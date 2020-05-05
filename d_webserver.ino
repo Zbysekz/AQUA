@@ -14,12 +14,12 @@ void handleRoot() {
     </style>\
   </head>\
   <body>\
-    <p> v1.2\
+    <p> v1.3\
     <p>Uptime: %lu seconds , %lu hours </p>\
     <p>UTC time now:%s\
     <p>value 1023 = 0%% power ; value 0 = 100%% power \
     <p>parPower1,parPower2,parPower3: %d ; %d ; %d</p>\
-    <p>parTime1 %d; parTime2 %d ; parTime3 %d ; parTime4 %d; parTime5 %d ; parTime6 %d </p>\
+    <p>parTime1 %u; parTime2 %u ; parTime3 %u ; parTime4 %u; parTime5 %u ; parTime6 %u </p>\
     <p>Actual gradient:%d</p>\
     <p>Act.out:%d   phase:%d</p>\
   </body>\
