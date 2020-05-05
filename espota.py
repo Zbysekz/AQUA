@@ -316,6 +316,6 @@ def main(args):
 
 
 if __name__ == '__main__':
-  main([sys.argv[0],"-i", "192.168.0.16","-f","/media/D/Data/ArduinoProjects/AQUA/AQUA.ino.generic.bin","-d"])#main(sys.argv)
+  main([sys.argv[0],"-i", "192.168.0.30","-f","/media/D/Data/ArduinoProjects/AQUA/AQUA.ino.generic.bin","-d"])#main(sys.argv)
   raw_input();
 # end if

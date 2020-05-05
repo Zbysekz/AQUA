@@ -20,6 +20,9 @@ void loop()
   if (syncEventTriggered) {
       processSyncEvent (ntpEvent);
       syncEventTriggered = false;
+
+      if(NTPsync)
+        NTP.stop();//stop syncing
   }
 
   if(!NTPsync){
@@ -68,10 +71,25 @@ void loop()
       }
     break;
    }
-  if (automatic && joinOK) { // jen pokud se podarilo spojeni k netu
-    analogWrite(4, outVal);
-    analogWrite(5, outVal);
+   
+  if (automatic) { // jen pokud se podarilo spojeni k netu
+    if(joinOK && NTPsync){
+      analogWrite(4, outVal);
+      analogWrite(5, outVal);
+    }else{
+      analogWrite(4, 1023);
+      analogWrite(5, 1023);
+    }
   }
+
+  /*if (millis() > tmrPrint + 3600000L){//each 1h
+    tmrPrint = millis();
+    Serial.print("Time:");
+    Serial.print(hour());
+    Serial.print(":");
+    Serial.println(minute());
+    
+  }*/
  
   
   //10sec timer

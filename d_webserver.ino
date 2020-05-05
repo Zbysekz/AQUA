@@ -14,7 +14,7 @@ void handleRoot() {
     </style>\
   </head>\
   <body>\
-    <p> v1.1\
+    <p> v1.2\
     <p>Uptime: %lu seconds , %lu hours </p>\
     <p>UTC time now:%s\
     <p>value 1023 = 0%% power ; value 0 = 100%% power \

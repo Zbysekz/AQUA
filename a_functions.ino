@@ -100,19 +100,19 @@ void writeToEEPROM() {
 }
 
 
-void processSyncEvent (NTPSyncEvent_t ntpEvent) {
-    if (ntpEvent < 0) {
-        Serial.printf ("Time Sync error: %d\n", ntpEvent);
-        if (ntpEvent == noResponse)
+void processSyncEvent (NTPSyncEvent_t e) {
+    if (e < 0) {
+        Serial.printf ("Time Sync error: %d\n", e);
+        if (e == noResponse)
             Serial.println ("NTP server not reachable");
-        else if (ntpEvent == invalidAddress)
+        else if (e == invalidAddress)
             Serial.println ("Invalid NTP server address");
-        else if (ntpEvent == errorSending)
+        else if (e == errorSending)
             Serial.println ("Error sending request");
-        else if (ntpEvent == responseError)
+        else if (e == responseError)
             Serial.println ("NTP response error");
     } else {
-        if (ntpEvent == timeSyncd) {
+        if (e == timeSyncd) {
             Serial.print ("Got NTP time: ");
             Serial.println (NTP.getTimeDateString (NTP.getLastNTPSync ()));
             NTPsync = true;
@@ -140,4 +140,5 @@ bool timeElapsed(tmElements_t t) { //true pokud cas t uz uplynul
       }
     }
   }
+  return false;
 }
