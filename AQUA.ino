@@ -30,6 +30,8 @@ String esid = JOIN_SSID, epass = JOIN_PSWD;
 unsigned long uptimein10sec=0;
 unsigned long tmrPrint;
 
+bool disableWebserver;
+
 tmElements_t parTime1,parTime2,parTime3,parTime4,parTime5,parTime6;
 int parPower1,parPower2,parPower3;
 

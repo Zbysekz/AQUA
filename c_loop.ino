@@ -2,7 +2,11 @@
 void loop()
 {
   ArduinoOTA.handle();
-  webserver.handleClient();
+
+  if(millis() > 600000UL)
+    disableWebserver= true;
+  if(!disableWebserver)
+    webserver.handleClient();// process webserver only 10mins after start
 
 
   if((!joinOK || !NTPsync) && uptimein10sec > 60){// kdyz se po zapnuti nedokazal spojit s netem nebo s NTP tak jen vytvori svoji sit a za 10 minut se restartuj 
@@ -14,7 +18,7 @@ void loop()
         setupNTP = true;
         NTP.setInterval (7200);//sec
         NTP.setNTPTimeout (NTP_TIMEOUT);
-        NTP.begin ("pool.ntp.org", 0, true, 0);
+        NTP.begin ("pool.ntp.org", 1, true, 0);
     }
   
   if (syncEventTriggered) {
@@ -96,7 +100,7 @@ void loop()
     phase = 0;
     outVal = 1023;
     Serial.println("EMERGENCY JUMP TO 0!");
-    SendLogToAdafruit("EMERGENCY JUMP TO 0!");
+    SendLogToAdafruit(String("EMERGENCY JUMP TO 0!")+String(parTime1.Hour)+"-"+String(hour()));
   }
   
   //10sec timer
