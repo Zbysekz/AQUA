@@ -121,10 +121,10 @@ void processSyncEvent (NTPSyncEvent_t e) {
 }
 
 bool timeElapsed(tmElements_t t) { //true pokud cas t uz uplynul
-  if (hour() > t.Hour) {
+  if (hour() >= t.Hour) {
     return true;
   }
-  if (hour() < t.Hour)return false;
+  /*if (hour() < t.Hour)return false;
   if (hour() == t.Hour) {
     if (minute() > t.Minute) {
       return true;
@@ -139,7 +139,7 @@ bool timeElapsed(tmElements_t t) { //true pokud cas t uz uplynul
         return true;
       }
     }
-  }
+  }*/
   return false;
 }
 
