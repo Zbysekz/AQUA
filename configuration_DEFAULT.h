@@ -7,8 +7,10 @@
 
 #define SETUP_SSID "ESP_SETUP"
 
-#define JOIN_SSID "Pamatka Houser"
-#define JOIN_PSWD "houser24"
+#define JOIN_SSID yourSSID_HERE
+#define JOIN_PSWD yourPWD_HERE
+
+#define IO_KEY       YOUR_IO_DASH_KEY_HERE
 
 // Definice I/O pinu
 

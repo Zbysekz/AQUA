@@ -150,7 +150,7 @@ void SendLogToAdafruit(String str){
 
    http.addHeader("Content-Type", "application/json");
 
-   http.addHeader("X-AIO-Key", "aio_ULqQ231RyQ84B5ANnYKi0TJp8Xuo");   
+   http.addHeader("X-AIO-Key", IO_KEY);   
 
    String postData = "{\"value\":\"" + str+"\"}";
    int httpCode = http.POST(postData);   //Send the request
